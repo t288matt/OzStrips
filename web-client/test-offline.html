@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OzStrips Offline Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 4px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+    </style>
+</head>
+<body>
+    <h1>OzStrips Offline Mode Test</h1>
+    
+    <div id="status"></div>
+    
+    <h2>Test Results:</h2>
+    <ul id="results"></ul>
+    
+    <p><a href="index.html">← Back to OzStrips Web Client</a></p>
+
+    <script>
+        const statusDiv = document.getElementById('status');
+        const resultsList = document.getElementById('results');
+        
+        function addResult(message, type = 'info') {
+            const li = document.createElement('li');
+            li.textContent = message;
+            li.className = type;
+            resultsList.appendChild(li);
+        }
+        
+        function updateStatus(message, type = 'info') {
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+        }
+        
+        // Test 1: Check if config loads
+        try {
+            if (typeof OzStripsConfig !== 'undefined') {
+                addResult('✅ Configuration loaded successfully', 'success');
+                addResult(`Server address: ${OzStripsConfig.socketioaddr || 'None (offline mode)'}`, 'info');
+            } else {
+                addResult('❌ Configuration not loaded', 'error');
+            }
+        } catch (e) {
+            addResult(`❌ Error loading config: ${e.message}`, 'error');
+        }
+        
+        // Test 2: Check if SignalR is available
+        try {
+            if (typeof signalR !== 'undefined') {
+                addResult('✅ SignalR library loaded', 'success');
+            } else {
+                addResult('❌ SignalR library not loaded', 'error');
+            }
+        } catch (e) {
+            addResult(`❌ Error checking SignalR: ${e.message}`, 'error');
+        }
+        
+        // Test 3: Check for CORS errors
+        setTimeout(() => {
+            const consoleErrors = [];
+            const originalError = console.error;
+            console.error = function(...args) {
+                consoleErrors.push(args.join(' '));
+                originalError.apply(console, args);
+            };
+            
+            setTimeout(() => {
+                const corsErrors = consoleErrors.filter(error => 
+                    error.includes('CORS') || 
+                    error.includes('Failed to fetch') ||
+                    error.includes('ozstripsserver.maxrumsey.xyz')
+                );
+                
+                if (corsErrors.length === 0) {
+                    addResult('✅ No CORS errors detected', 'success');
+                    updateStatus('All tests passed! Offline mode is working correctly.', 'success');
+                } else {
+                    addResult(`❌ CORS errors detected: ${corsErrors.length} errors`, 'error');
+                    corsErrors.forEach(error => addResult(`   - ${error}`, 'error'));
+                    updateStatus('CORS errors found. Check the console for details.', 'error');
+                }
+            }, 2000);
+        }, 1000);
+    </script>
+</body>
+</html> 

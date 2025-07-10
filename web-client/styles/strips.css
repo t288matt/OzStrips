@@ -1,0 +1,311 @@
+/* OzStrips Web Client Strip Styles */
+
+.strip {
+    display: inline-block;
+    margin: 2px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.strip:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.strip.selected {
+    box-shadow: 0 0 0 2px #3498db;
+}
+
+.strip.departure {
+    background-color: #c1e6f2;
+}
+
+.strip.arrival {
+    background-color: #ffffa0;
+}
+
+.strip-element {
+    display: inline-block;
+    border: 1px solid #000;
+    text-align: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.strip-element.clickable {
+    cursor: pointer;
+}
+
+.strip-element.clickable:hover {
+    background-color: rgba(52, 152, 219, 0.2);
+}
+
+.strip-element.picked {
+    background-color: #c0c0c0;
+}
+
+.strip-element.warning {
+    background-color: #ffa500;
+}
+
+.strip-element.error {
+    background-color: #ff0000;
+}
+
+.strip-element.success {
+    background-color: #00ff00;
+}
+
+.strip-element.info {
+    background-color: #87ceeb;
+}
+
+/* Strip element specific styles */
+.strip-element.stand {
+    width: 50px;
+    height: 20px;
+}
+
+.strip-element.ades {
+    width: 50px;
+    height: 20px;
+}
+
+.strip-element.eobt {
+    width: 50px;
+    height: 20px;
+}
+
+.strip-element.route {
+    width: 25px;
+    height: 20px;
+}
+
+.strip-element.frul {
+    width: 25px;
+    height: 20px;
+}
+
+.strip-element.type {
+    width: 50px;
+    height: 20px;
+}
+
+.strip-element.wtc {
+    width: 25px;
+    height: 20px;
+}
+
+.strip-element.pdc-indicator {
+    width: 25px;
+    height: 20px;
+}
+
+.strip-element.ssr {
+    width: 50px;
+    height: 20px;
+}
+
+.strip-element.acid {
+    width: 75px;
+    height: 40px;
+    font-weight: bold;
+}
+
+.strip-element.rwy {
+    width: 30px;
+    height: 20px;
+}
+
+.strip-element.ready {
+    width: 30px;
+    height: 20px;
+}
+
+.strip-element.clx {
+    width: 50px;
+    height: 40px;
+}
+
+.strip-element.sid {
+    width: 60px;
+    height: 20px;
+    background-color: #90ee90;
+}
+
+.strip-element.first-wpt {
+    width: 60px;
+    height: 20px;
+}
+
+.strip-element.rfl {
+    width: 30px;
+    height: 20px;
+}
+
+.strip-element.cfl {
+    width: 30px;
+    height: 20px;
+}
+
+.strip-element.glop {
+    width: 165px;
+    height: 20px;
+}
+
+.strip-element.remark {
+    width: 165px;
+    height: 20px;
+}
+
+.strip-element.hdg {
+    width: 60px;
+    height: 20px;
+}
+
+.strip-element.tot {
+    width: 30px;
+    height: 20px;
+    font-size: 10px;
+}
+
+/* Strip states */
+.strip.cocked {
+    transform: rotate(5deg);
+}
+
+.strip.crossing {
+    border: 2px solid #ff0000;
+}
+
+.strip.ready {
+    border: 2px solid #00ff00;
+}
+
+/* Strip animations */
+.strip {
+    transition: all 0.2s ease-in-out;
+}
+
+.strip.moving {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Strip tooltips */
+.strip-tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+    pointer-events: none;
+    max-width: 300px;
+    word-wrap: break-word;
+}
+
+.strip-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+/* Strip drag and drop */
+.strip.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+}
+
+.strip.drag-over {
+    border: 2px dashed #3498db;
+}
+
+/* Strip selection */
+.strip-selection {
+    position: absolute;
+    border: 2px solid #3498db;
+    background-color: rgba(52, 152, 219, 0.1);
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* Strip context menu */
+.strip-context-menu {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    min-width: 150px;
+}
+
+.strip-context-menu-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.strip-context-menu-item:hover {
+    background-color: #f5f5f5;
+}
+
+.strip-context-menu-item:last-child {
+    border-bottom: none;
+}
+
+/* Strip loading states */
+.strip.loading {
+    opacity: 0.6;
+}
+
+.strip.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Strip responsive design */
+@media (max-width: 768px) {
+    .strip {
+        transform: scale(0.8);
+        transform-origin: top left;
+    }
+    
+    .strip-element {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .strip {
+        transform: scale(0.6);
+        transform-origin: top left;
+    }
+    
+    .strip-element {
+        font-size: 8px;
+    }
+} 

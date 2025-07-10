@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OzStrips Web Client</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/strips.css">
+    <link rel="stylesheet" href="styles/bays.css">
+    <link rel="stylesheet" href="styles/controls.css">
+    <link rel="stylesheet" href="styles/modals.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Menu Bar -->
+        <div class="menu-bar">
+            <div class="menu-item">
+                <label for="aerodrome-select">Aerodrome:</label>
+                <input type="text" id="aerodrome-input" placeholder="ICAO Code" maxlength="4">
+                <select id="aerodrome-select">
+                    <option value="">Select Aerodrome</option>
+                </select>
+            </div>
+            <div class="menu-item">
+                <label for="view-mode">View Mode:</label>
+                <select id="view-mode">
+                    <option value="ALL">All</option>
+                    <option value="ACD">ACD</option>
+                    <option value="SMC">SMC</option>
+                    <option value="ADC">ADC</option>
+                    <option value="ACD+SMC">ACD+SMC</option>
+                    <option value="SMC+ADC">SMC+ADC</option>
+                </select>
+            </div>
+            <div class="menu-item">
+                <button id="debug-btn">Debug</button>
+                <button id="about-btn">About</button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Bay Container -->
+            <div id="bay-container" class="bay-container">
+                <!-- Bays will be dynamically created here -->
+            </div>
+
+            <!-- Control Bar -->
+            <div class="control-bar">
+                <div class="control-item">
+                    <span class="label">CONN STAT:</span>
+                    <div id="connection-status" class="status-indicator disconnected"></div>
+                </div>
+                <div class="control-item">
+                    <span class="label">Time:</span>
+                    <span id="current-time">00:00:00</span>
+                </div>
+                <div class="control-item">
+                    <span class="label">Aerodrome:</span>
+                    <span id="current-aerodrome">????</span>
+                </div>
+                <div class="control-item">
+                    <button id="inhibit-btn" class="control-btn">INHI</button>
+                    <button id="force-strip-btn" class="control-btn">FOR STP</button>
+                    <button id="cross-btn" class="control-btn">CROSS</button>
+                    <button id="pdc-btn" class="control-btn">PDC</button>
+                    <button id="add-bar-btn" class="control-btn">ADD BAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div id="modal-container" class="modal-container">
+            <!-- Modal content will be dynamically created -->
+        </div>
+    </div>
+
+    <!-- Debug Panel -->
+    <div id="debug-panel" class="debug-panel hidden">
+        <div class="debug-header">
+            <h3>SignalR Messages</h3>
+            <button id="close-debug">×</button>
+        </div>
+        <div id="debug-messages" class="debug-messages"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/enums.js"></script>
+    <script src="js/strip-elements.js"></script>
+    <script src="js/strip.js"></script>
+    <script src="js/bay.js"></script>
+    <script src="js/bay-manager.js"></script>
+    <script src="js/socket-connection.js"></script>
+    <script src="js/strip-view.js"></script>
+    <script src="js/strip-controller.js"></script>
+    <script src="js/keyboard-handler.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 

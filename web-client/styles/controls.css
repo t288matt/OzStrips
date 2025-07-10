@@ -1,0 +1,391 @@
+/* OzStrips Web Client Control Styles */
+
+.control-bar {
+    display: flex;
+    align-items: center;
+    background-color: #34495e;
+    color: white;
+    padding: 8px 16px;
+    gap: 20px;
+    border-top: 2px solid #2c3e50;
+    flex-wrap: wrap;
+}
+
+.control-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.control-item .label {
+    font-weight: 500;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.control-btn {
+    padding: 6px 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap;
+    min-width: 60px;
+}
+
+.control-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn:active {
+    background-color: #21618c;
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.control-btn:disabled:hover {
+    background-color: #6c757d;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Control button variants */
+.control-btn.primary {
+    background-color: #3498db;
+}
+
+.control-btn.success {
+    background-color: #28a745;
+}
+
+.control-btn.success:hover {
+    background-color: #1e7e34;
+}
+
+.control-btn.warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.control-btn.warning:hover {
+    background-color: #e0a800;
+}
+
+.control-btn.danger {
+    background-color: #dc3545;
+}
+
+.control-btn.danger:hover {
+    background-color: #c82333;
+}
+
+.control-btn.info {
+    background-color: #17a2b8;
+}
+
+.control-btn.info:hover {
+    background-color: #138496;
+}
+
+/* Status indicators */
+.status-indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+}
+
+.status-indicator.connected {
+    background-color: #27ae60;
+    box-shadow: 0 0 8px rgba(39, 174, 96, 0.4);
+}
+
+.status-indicator.disconnected {
+    background-color: #e74c3c;
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.4);
+}
+
+.status-indicator.connecting {
+    background-color: #f39c12;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.status-indicator.offline {
+    background-color: #9E9E9E;
+    box-shadow: 0 0 8px rgba(158, 158, 158, 0.4);
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Control groups */
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.control-group .label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #bdc3c7;
+}
+
+/* Control inputs */
+.control-input {
+    padding: 4px 8px;
+    border: 1px solid #34495e;
+    border-radius: 4px;
+    background-color: #34495e;
+    color: white;
+    font-size: 14px;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.control-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.control-input::placeholder {
+    color: #95a5a6;
+}
+
+/* Control selects */
+.control-select {
+    padding: 4px 8px;
+    border: 1px solid #34495e;
+    border-radius: 4px;
+    background-color: #34495e;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.control-select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.control-select option {
+    background-color: #34495e;
+    color: white;
+}
+
+/* Control toggles */
+.control-toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.control-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.control-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #6c757d;
+    transition: 0.2s;
+    border-radius: 20px;
+}
+
+.control-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.2s;
+    border-radius: 50%;
+}
+
+.control-toggle input:checked + .control-toggle-slider {
+    background-color: #3498db;
+}
+
+.control-toggle input:checked + .control-toggle-slider:before {
+    transform: translateX(20px);
+}
+
+/* Control tooltips */
+.control-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.control-tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1000;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+}
+
+.control-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.control-tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+/* Control responsive design */
+@media (max-width: 768px) {
+    .control-bar {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px;
+    }
+    
+    .control-item {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .control-btn {
+        min-width: 80px;
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .control-bar {
+        padding: 6px;
+    }
+    
+    .control-btn {
+        min-width: 70px;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .control-item .label {
+        font-size: 12px;
+    }
+}
+
+/* Control animations */
+.control-btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.control-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.4);
+}
+
+/* Control loading states */
+.control-btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+.control-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Control badges */
+.control-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 12px;
+    background-color: #6c757d;
+    color: white;
+}
+
+.control-badge.primary {
+    background-color: #3498db;
+}
+
+.control-badge.success {
+    background-color: #28a745;
+}
+
+.control-badge.warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.control-badge.danger {
+    background-color: #dc3545;
+}
+
+.control-badge.info {
+    background-color: #17a2b8;
+} 

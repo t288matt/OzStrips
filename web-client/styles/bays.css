@@ -1,0 +1,324 @@
+/* OzStrips Web Client Bay Styles */
+
+.bay {
+    position: relative;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.bay:hover {
+    border-color: #3498db;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+}
+
+.bay.selected {
+    border-color: #3498db;
+    background-color: #ebf3fd;
+}
+
+.bay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #e9ecef;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 6px 6px 0 0;
+    font-weight: 600;
+    font-size: 14px;
+    color: #495057;
+}
+
+.bay-name {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.bay-count {
+    background-color: #6c757d;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.bay-content {
+    padding: 10px;
+    min-height: 60px;
+}
+
+.bay-canvas {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 4px;
+}
+
+/* Bay types */
+.bay[data-name="Preactive"] {
+    border-left: 4px solid #6c757d;
+}
+
+.bay[data-name="Cleared"] {
+    border-left: 4px solid #28a745;
+}
+
+.bay[data-name="Pushback"] {
+    border-left: 4px solid #ffc107;
+}
+
+.bay[data-name="Taxi"] {
+    border-left: 4px solid #17a2b8;
+}
+
+.bay[data-name="Holding Point"] {
+    border-left: 4px solid #fd7e14;
+}
+
+.bay[data-name="Runway"] {
+    border-left: 4px solid #dc3545;
+}
+
+.bay[data-name="Departure"] {
+    border-left: 4px solid #6f42c1;
+}
+
+.bay[data-name="Arrival"] {
+    border-left: 4px solid #20c997;
+}
+
+/* Bay states */
+.bay.empty {
+    opacity: 0.6;
+}
+
+.bay.empty .bay-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.bay.drag-over {
+    border-color: #3498db;
+    background-color: #ebf3fd;
+    transform: scale(1.02);
+}
+
+.bay.drag-over::after {
+    content: 'Drop strip here';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3498db;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 10;
+}
+
+/* Bay animations */
+.bay {
+    transition: all 0.2s ease-in-out;
+}
+
+.bay.strip-added {
+    animation: bayHighlight 0.5s ease-in-out;
+}
+
+@keyframes bayHighlight {
+    0% { background-color: #ebf3fd; }
+    50% { background-color: #d4edda; }
+    100% { background-color: #f8f9fa; }
+}
+
+.bay.strip-removed {
+    animation: bayFade 0.3s ease-in-out;
+}
+
+@keyframes bayFade {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Bay controls */
+.bay-controls {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.bay:hover .bay-controls {
+    opacity: 1;
+}
+
+.bay-control-btn {
+    width: 20px;
+    height: 20px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.bay-control-btn:hover {
+    background-color: #495057;
+}
+
+.bay-control-btn.add-bar {
+    background-color: #28a745;
+}
+
+.bay-control-btn.add-bar:hover {
+    background-color: #1e7e34;
+}
+
+.bay-control-btn.clear-bay {
+    background-color: #dc3545;
+}
+
+.bay-control-btn.clear-bay:hover {
+    background-color: #c82333;
+}
+
+/* Bay bars */
+.bay-bar {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 4px 0;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    color: #856404;
+}
+
+.bay-bar.type-1 {
+    background-color: #fff3cd;
+    border-color: #ffeaa7;
+    color: #856404;
+}
+
+.bay-bar.type-2 {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.bay-bar.type-3 {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+/* Bay responsive design */
+@media (max-width: 768px) {
+    .bay {
+        margin-bottom: 8px;
+    }
+    
+    .bay-header {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    .bay-content {
+        padding: 8px;
+    }
+    
+    .bay-controls {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .bay {
+        margin-bottom: 6px;
+    }
+    
+    .bay-header {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+    
+    .bay-content {
+        padding: 6px;
+    }
+}
+
+/* Bay drag and drop */
+.bay.drag-source {
+    opacity: 0.5;
+    transform: scale(0.95);
+}
+
+.bay.drag-target {
+    border-color: #3498db;
+    background-color: #ebf3fd;
+}
+
+/* Bay loading states */
+.bay.loading {
+    opacity: 0.7;
+}
+
+.bay.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 10;
+}
+
+/* Bay tooltips */
+.bay-tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+    pointer-events: none;
+    max-width: 250px;
+    word-wrap: break-word;
+}
+
+.bay-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+} 
