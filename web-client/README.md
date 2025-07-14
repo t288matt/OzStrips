@@ -95,14 +95,6 @@ The client connects to the official OzStrips server:
 - **Hub**: `OzStripsHub`
 - **Protocol**: SignalR
 
-### Aerodrome Support
-Default aerodromes included:
-- EGLL (London Heathrow)
-- EGCC (Manchester)
-- EGSS (London Stansted)
-- EGBB (Birmingham)
-- EGGW (London Luton)
-
 ## Development
 
 ### Project Structure
